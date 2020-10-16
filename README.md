@@ -47,7 +47,7 @@ See [`benchmark.py`](benchmark.py)
 
 test case|base64 runtime (ms)|baseMEOW runtime (ms)|base64 size (bytes)|baseMEOW size (bytes)
 ---|---|---|---|---
-10 characters|10.65|17|155.07|42
-1000 characters|11.53|1337|139.65|4002
-10000 characters|10.72|13337|162.66|40002
-1000000 characters|37.09|1333337|2278.86|4000002
+10 characters|11.06|202.69|17|42
+1000 characters|12.05|168.23|1337|4002
+10000 characters|11.57|159.92|13337|40002
+1000000 characters|34.74|2500.45|1333337|4000002

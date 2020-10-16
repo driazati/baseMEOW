@@ -62,8 +62,8 @@ for test in tests:
         [
             test.description,
             round(base64_result.duration, 2),
-            base64_result.size,
             round(baseMEOW_result.duration, 2),
+            base64_result.size,
             baseMEOW_result.size,
         ]
     )
