@@ -53,6 +53,9 @@ def decode(encoded_text):
     bit_string = ""
     last_c = encoded_text[0]
     for c in encoded_text[1:]:
+        if c == "\n":
+            continue
+
         if c == padding:
             # it's the last thing
             pass
@@ -90,10 +93,12 @@ def main():
     args = parser.parse_args()
 
     text = sys.stdin.buffer.read()
-
     if args.decode:
         result = decode(text.decode("ascii"))
-        print(result.decode("utf-8"))
+        try:
+            print(result.decode("utf-8"), end="")
+        except UnicodeError:
+            print(result.hex())
     else:
         result = encode(text)
         print(result)
