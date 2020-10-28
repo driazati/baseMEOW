@@ -22,15 +22,18 @@ class TestCase:
             base64_result = subprocess.run(
                 "base64", input=self.text.encode("utf-8"), stdout=subprocess.PIPE
             )
-            base64_len = len(base64_result.stdout)
+        base64_len = len(base64_result.stdout)
 
         pyarkbench.cleanup()
 
         with pyarkbench.Timer() as baseMEOW_timer:
+            # baseMEOW_result = subprocess.run(
+            #     "baseMEOW", input=self.text.encode("utf-8"), stdout=subprocess.PIPE
+            # )
             baseMEOW_result = subprocess.run(
-                "baseMEOW", input=self.text.encode("utf-8"), stdout=subprocess.PIPE
+                "./src/a.out", input=self.text.encode("utf-8"), stdout=subprocess.PIPE
             )
-            baseMEOW_len = len(baseMEOW_result.stdout)
+        baseMEOW_len = len(baseMEOW_result.stdout)
 
         return Result(base64_timer.ms_duration, base64_len), Result(
             baseMEOW_timer.ms_duration, baseMEOW_len
@@ -38,10 +41,10 @@ class TestCase:
 
 
 tests = [
-    TestCase("10 characters", "a" * 10),
+    # TestCase("10 characters", "a" * 10),
     TestCase("1000 characters", "a" * 1000),
-    TestCase("10000 characters", "a" * 10000),
-    TestCase("1000000 characters", "a" * 1000000),
+    # TestCase("10000 characters", "a" * 10000),
+    # TestCase("1000000 characters", "a" * 1000000),
 ]
 
 
