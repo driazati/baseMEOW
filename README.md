@@ -5,7 +5,7 @@ baseMEOW is an encoder/decoder that can store binary as a string of characters t
 ## Installation
 
 ```bash
-# requires Python 3.6+
+# requires Python 3.7+
 pip install baseMEOW
 ```
 
