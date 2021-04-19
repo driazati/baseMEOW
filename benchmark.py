@@ -31,7 +31,7 @@ class TestCase:
             #     "baseMEOW", input=self.text.encode("utf-8"), stdout=subprocess.PIPE
             # )
             baseMEOW_result = subprocess.run(
-                "./src/a.out", input=self.text.encode("utf-8"), stdout=subprocess.PIPE
+                "./meow", input=self.text.encode("utf-8"), stdout=subprocess.PIPE
             )
         baseMEOW_len = len(baseMEOW_result.stdout)
 
@@ -41,10 +41,10 @@ class TestCase:
 
 
 tests = [
-    # TestCase("10 characters", "a" * 10),
+    TestCase("10 characters", "a" * 10),
     TestCase("1000 characters", "a" * 1000),
-    # TestCase("10000 characters", "a" * 10000),
-    # TestCase("1000000 characters", "a" * 1000000),
+    TestCase("10000 characters", "a" * 10000),
+    TestCase("1000000 characters", "a" * 1000000),
 ]
 
 
