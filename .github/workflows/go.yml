@@ -1,0 +1,17 @@
+name: Re-generate list
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: say hi
+        run: |
+          echo hi
+      - name: say something else
+        run: |
+          echo '::set-output name=SELECTED_COLOR::green'
+          echo '::error dogs'
