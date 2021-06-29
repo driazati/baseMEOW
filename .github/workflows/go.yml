@@ -15,8 +15,6 @@ jobs:
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         name: Upload some stuff
         with:
-          name: deploy
-          retention-days: 14
           if-no-files-found: error
           path: test.txt
           s3-prefix: linux64
