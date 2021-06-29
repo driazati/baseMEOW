@@ -8,10 +8,18 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
-      - name: say hi
+      - name: make a file
         run: |
-          echo hi
-      - name: say something else
-        run: |
-          echo '::set-output name=SELECTED_COLOR::green'
-          echo '::error dogs'
+          echo hello > test.txt
+      - uses: driazati/upload-artifact-s3@50adbe4ef0b6d9221df25c18c5fc528dfcb7c3f8
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        name: Upload some stuff
+        with:
+          name: deploy
+          retention-days: 14
+          if-no-files-found: error
+          path: test.txt
+          s3-prefix: linux64
+          s3-bucket: oss-clang-format
+          aws-access-key-id: ${{ secrets.AWS_OSS_CLANG_FORMAT_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_OSS_CLANG_FORMAT_ACCESS_KEY }}
